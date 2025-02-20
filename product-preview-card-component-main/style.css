@@ -1,0 +1,181 @@
+:root {
+	/** Colors **/
+	--clr-primary-700: hsl(158, 42%, 18%); /** Green 700 **/
+	--clr-primary-500: hsl(158, 36%, 37%); /** Green 500 **/
+
+	--clr-neutral-900: hsl(212, 21%, 14%); /** Black **/
+	--clr-neutral-400: hsl(228, 12%, 48%); /** Grey **/
+	--clr-neutral-200: hsl(30, 38%, 92%); /** Cream **/
+	--clr-neutral-100: hsl(0, 0%, 100%); /** White **/
+
+	/** Font Weights **/
+	--fw-bold: 700;
+	--fw-medium: 500;
+
+	/** Spacing **/
+	--s-400: 2rem;
+	--s-300: 1.5rem;
+	--s-200: 1rem;
+	--s-100: 0.5rem;
+
+	font-optical-sizing: auto;
+}
+
+/** Reset from https://www.joshwcomeau.com/css/custom-css-reset/ **/
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+	margin: 0;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+	font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+	overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+	text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1;
+	text-wrap: balance;
+}
+/** End Reset **/
+
+/** Typography **/
+
+.text-preset-1 {
+	font-family: "Fraunces", serif;
+	font-size: 2rem;
+	font-weight: var(--fw-bold);
+	line-height: 1;
+	letter-spacing: 0;
+}
+
+.text-preset-2 {
+	font-family: "Montserrat", serif;
+	font-size: 0.875rem;
+	font-weight: var(--fw-bold);
+	line-height: 1.1;
+	letter-spacing: 0;
+}
+
+.text-preset-3 {
+	font-family: "Montserrat", serif;
+	font-size: 0.875rem;
+	font-weight: var(--fw-medium);
+	line-height: 1.6;
+	letter-spacing: 0;
+}
+
+.text-preset-4 {
+	font-family: "Montserrat", serif;
+	font-size: 0.75rem;
+	font-weight: var(--fw-medium);
+	line-height: 1.2;
+	letter-spacing: 5px;
+}
+
+.text-preset-5 {
+	font-family: "Montserrat", serif;
+	font-size: 0.8125rem;
+	font-weight: var(--fw-medium);
+	line-height: 1.2;
+	letter-spacing: 0;
+}
+
+/** Styling **/
+
+body {
+	color: var(--clr-neutral-400);
+	background: var(--clr-neutral-200);
+}
+
+main {
+	min-height: 100dvh;
+	align-content: center;
+}
+
+button {
+	background: none;
+	border: none;
+}
+
+.product {
+	--product-margin: 0.75rem;
+	--product-max-width: 37.5rem;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(var(--product-max-width) / 2, 100%), 1fr));
+
+	width: min(100% - 2 * var(--product-margin), var(--product-max-width));
+	margin-inline: auto;
+}
+
+.product__content {
+	display: grid;
+	gap: var(--s-400);
+	padding: var(--s-400);
+
+	background: var(--clr-neutral-100);
+}
+
+.product__info {
+	display: grid;
+	gap: var(--s-300);
+}
+
+.product__title {
+	color: var(--clr-neutral-900);
+}
+
+.product__price {
+	display: flex;
+	align-items: center;
+	gap: var(--s-200);
+}
+
+.product__current-price {
+	color: var(--clr-primary-500);
+}
+
+.product__add {
+	line-height: 1;
+	padding-inline: var(--s-400);
+	padding-block: var(--s-200);
+
+	border-radius: 0.5rem;
+
+	background: var(--clr-primary-500);
+	color: var(--clr-neutral-100);
+
+	&:is(:hover, :focus) {
+		background: var(--clr-primary-700);
+	}
+
+	&[data-icon="shopping-cart"]::before {
+		display: inline-block;
+		margin-right: var(--s-100);
+		vertical-align: middle;
+		content: url("./images/icon-cart.svg");
+	}
+
+
+}
