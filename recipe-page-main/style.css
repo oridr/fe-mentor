@@ -1,28 +1,183 @@
-/* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
-	box-sizing: border-box;
+@layer reset, typography, recipe;
+
+:root {
+	--c-white: hsl(0, 0%, 100%);
+	--c-stone-900: hsl(24, 5%, 18%);
+	--c-stone-600: hsl(30, 10%, 34%);
+	--c-stone-150: hsl(30, 18%, 87%);
+	--c-stone-100: hsl(30, 54%, 90%);
+	--c-brown-800: hsl(14, 45%, 36%);
+	--c-rose-800: hsl(332, 51%, 32%);
+	--c-rose-50: hsl(330, 100%, 98%);
+
+	--s-1600: 8rem; /* 128px */
+	--s-600: 3rem; /* 48px */
+	--s-500: 2.5rem; /* 40px */
+	--s-400: 2rem; /* 32px */
+	--s-300: 1.5rem; /* 24px */
+	--s-200: 1rem; /* 16px */
+	--s-150: 0.75rem; /* 12px */
+	--s-100: 0.5rem; /* 8px; */
 }
-/* 2. Remove default margin */
-* {
-	margin: 0;
+
+@layer reset {
+	/* 1. Use a more-intuitive box-sizing model */
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	/* 2. Remove default margin */
+	* {
+		margin: 0;
+	}
+
+	/* 5. Improve media defaults */
+	img, picture, video, canvas, svg {
+		display: block;
+		max-width: 100%;
+	}
+
+	/* 6. Inherit fonts for form controls */
+	input, button, textarea, select {
+		font: inherit;
+	}
+
+	/* 7. Avoid text overflows */
+	p, h1, h2, h3, h4, h5, h6 {
+		overflow-wrap: break-word;
+	}
+
+	/* 8. Improve line wrapping */
+	p {
+		text-wrap: pretty;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		text-wrap: balance;
+	}
 }
-/* 5. Improve media defaults */
-img, picture, video, canvas, svg {
-	display: block;
-	max-width: 100%;
+
+@layer typography {
+	:root {
+		letter-spacing: 0;
+	}
+
+	.text-preset-1, .text-preset-2 {
+		font-family: "Young Serif", serif;
+		line-height: 1;
+	}
+
+	.text-preset-1 {
+		font-size: 2.5rem;
+	}
+
+	.text-preset-2 {
+		font-size: 1.75rem;
+	}
+
+	.text-preset-3, .text-preset-4, .text-preset-5 {
+		font-family: "Outfit", serif;
+	}
+
+	.text-preset-3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		line-height: 1;
+	}
+
+	.text-preset-4 {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
 }
-/* 6. Inherit fonts for form controls */
-input, button, textarea, select {
-	font: inherit;
+
+body {
+	background: var(--c-stone-100);
+	color: var(--c-stone-600);
 }
-/* 7. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-	overflow-wrap: break-word;
-}
-/* 8. Improve line wrapping */
-p {
-	text-wrap: pretty;
-}
-h1, h2, h3, h4, h5, h6 {
-	text-wrap: balance;
+
+@layer recipe {
+	.recipe {
+		display: grid;
+		gap: var(--s-400);
+		width: min(46rem, 100%);
+		margin-inline: auto;
+		background: var(--c-white);
+
+		h1 {
+			margin-block-end: var(--s-300);
+			color: var(--c-stone-900);
+		}
+
+		h2 {
+			margin-block-end: var(--s-300);
+			color: var(--c-brown-800);
+		}
+
+		h3 {
+			margin-block-end: var(--s-200);
+			color: var(--c-rose-800);
+		}
+
+		li {
+			padding-inline-start: var(--s-200);
+
+			&::marker {
+				font-weight: 700;
+				color: var(--c-brown-800);
+			}
+
+			& + & {
+				margin-block-start: var(--s-100);
+			}
+		}
+	}
+
+	.recipe__photo {
+		object-fit: contain;
+		height: auto;
+	}
+
+	.recipe__prep-time {
+		padding: var(--s-300);
+		background: var(--c-rose-50);
+	}
+
+	.recipe__instructions {
+		padding-block: var(--s-400);
+		border-color: var(--c-stone-150);
+		border-style: solid;
+		border-width: 1px 0;
+	}
+
+	.recipe__nutrition {
+		table {
+			width: 100%;
+			margin-block-start: var(--s-300);
+			border-collapse: collapse;
+		}
+
+		tr + tr {
+			border-block-start: 1px solid var(--c-stone-150);
+		}
+
+		tr:not(:first-child) td {
+			padding-block-start: var(--s-150);
+		}
+
+		tr:not(:last-child) td {
+			padding-block-end: var(--s-150);
+		}
+
+		td {
+			padding-inline-start: var(--s-400);
+
+
+		}
+
+		td:last-child {
+			font-weight: 700;
+			color: var(--c-brown-800);
+		}
+	}
 }
