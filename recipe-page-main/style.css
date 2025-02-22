@@ -1,4 +1,4 @@
-@layer reset, typography, recipe;
+@layer reset, typography;
 
 :root {
 	--c-white: hsl(0, 0%, 100%);
@@ -46,15 +46,6 @@
 	p, h1, h2, h3, h4, h5, h6 {
 		overflow-wrap: break-word;
 	}
-
-	/* 8. Improve line wrapping */
-	p {
-		text-wrap: pretty;
-	}
-
-	h1, h2, h3, h4, h5, h6 {
-		text-wrap: balance;
-	}
 }
 
 @layer typography {
@@ -68,7 +59,7 @@
 	}
 
 	.text-preset-1 {
-		font-size: 2.5rem;
+		font-size: clamp(2.25rem, 2.0714rem + 0.8929vw, 2.5rem);
 	}
 
 	.text-preset-2 {
@@ -96,88 +87,108 @@ body {
 	color: var(--c-stone-600);
 }
 
-@layer recipe {
+@media (min-width: 768px) {
 	.recipe {
-		display: grid;
-		gap: var(--s-400);
-		width: min(46rem, 100%);
-		margin-inline: auto;
-		background: var(--c-white);
+		--_article-margin-block: var(--s-1600);
+		--_article-border-radius: var(--s-300);
+		--_photo-border-radius: var(--s-150);
+	}
+}
 
-		h1 {
-			margin-block-end: var(--s-300);
-			color: var(--c-stone-900);
-		}
+.recipe {
+	display: grid;
+	gap: var(--s-400);
+	width: min(clamp(38.5rem, 29.9286rem + 17.8571vw, 46rem), 100%);
+	margin-inline: auto;
+	margin-block: var(--_article-margin-block, 0);
+	padding-block-end: var(--s-500);
+	background: var(--c-white);
 
-		h2 {
-			margin-block-end: var(--s-300);
-			color: var(--c-brown-800);
-		}
+	border-radius: var(--_article-border-radius, 0);
 
-		h3 {
-			margin-block-end: var(--s-200);
-			color: var(--c-rose-800);
-		}
-
-		li {
-			padding-inline-start: var(--s-200);
-
-			&::marker {
-				font-weight: 700;
-				color: var(--c-brown-800);
-			}
-
-			& + & {
-				margin-block-start: var(--s-100);
-			}
-		}
+	header, section {
+		margin-inline: clamp(2rem, 1.5229rem + 2.0356vw, var(--s-500));
 	}
 
-	.recipe__photo {
-		object-fit: contain;
-		height: auto;
+	h1 {
+		margin-block-end: var(--s-300);
+		color: var(--c-stone-900);
 	}
 
-	.recipe__prep-time {
-		padding: var(--s-300);
-		background: var(--c-rose-50);
+	h2 {
+		margin-block-end: var(--s-300);
+		color: var(--c-brown-800);
 	}
 
-	.recipe__instructions {
-		padding-block: var(--s-400);
-		border-color: var(--c-stone-150);
-		border-style: solid;
-		border-width: 1px 0;
+	h3 {
+		margin-block-end: var(--s-200);
+		color: var(--c-rose-800);
 	}
 
-	.recipe__nutrition {
-		table {
-			width: 100%;
-			margin-block-start: var(--s-300);
-			border-collapse: collapse;
-		}
+	li {
+		padding-inline-start: var(--s-200);
 
-		tr + tr {
-			border-block-start: 1px solid var(--c-stone-150);
-		}
-
-		tr:not(:first-child) td {
-			padding-block-start: var(--s-150);
-		}
-
-		tr:not(:last-child) td {
-			padding-block-end: var(--s-150);
-		}
-
-		td {
-			padding-inline-start: var(--s-400);
-
-
-		}
-
-		td:last-child {
+		&::marker {
 			font-weight: 700;
 			color: var(--c-brown-800);
 		}
+
+		& + & {
+			margin-block-start: var(--s-100);
+		}
+	}
+}
+
+.recipe__photo {
+	--photo-margin: clamp(0rem, -2.3855rem + 10.1781vw, var(--s-500));
+	object-fit: contain;
+	width: calc(100% - 2 * var(--photo-margin));
+	height: auto;
+	margin: var(--photo-margin);
+	margin-block-end: var(--s-100);
+
+	border-radius: var(--_photo-border-radius, 0);
+}
+
+.recipe__prep-time {
+	padding: var(--s-300);
+	background: var(--c-rose-50);
+}
+
+.recipe__instructions {
+	padding-block: var(--s-400);
+	border-color: var(--c-stone-150);
+	border-style: solid;
+	border-width: 1px 0;
+}
+
+.recipe__nutrition {
+	table {
+		width: 100%;
+		margin-block-start: var(--s-300);
+		border-collapse: collapse;
+	}
+
+	tr + tr {
+		border-block-start: 1px solid var(--c-stone-150);
+	}
+
+	tr:not(:first-child) td {
+		padding-block-start: var(--s-150);
+	}
+
+	tr:not(:last-child) td {
+		padding-block-end: var(--s-150);
+	}
+
+	td {
+		padding-inline-start: var(--s-400);
+
+
+	}
+
+	td:last-child {
+		font-weight: 700;
+		color: var(--c-brown-800);
 	}
 }
