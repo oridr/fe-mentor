@@ -60,10 +60,12 @@
 
 	.text-preset-1 {
 		font-size: clamp(2.25rem, 2.0714rem + 0.8929vw, 2.5rem);
+		font-weight: 400;
 	}
 
 	.text-preset-2 {
 		font-size: 1.75rem;
+		font-weight: 400;
 	}
 
 	.text-preset-3, .text-preset-4, .text-preset-5 {
@@ -120,11 +122,6 @@ body {
 		color: var(--c-brown-800);
 	}
 
-	h3 {
-		margin-block-end: var(--s-200);
-		color: var(--c-rose-800);
-	}
-
 	li {
 		padding-inline-start: var(--s-200);
 
@@ -153,6 +150,11 @@ body {
 .recipe__prep-time {
 	padding: var(--s-300);
 	background: var(--c-rose-50);
+
+	h2 {
+		margin-block-end: var(--s-200);
+		color: var(--c-rose-800);
+	}
 }
 
 .recipe__instructions {
@@ -182,9 +184,11 @@ body {
 	}
 
 	td {
+		padding-inline: var(--s-200);
+	}
+
+	td:first-child {
 		padding-inline-start: var(--s-400);
-
-
 	}
 
 	td:last-child {
