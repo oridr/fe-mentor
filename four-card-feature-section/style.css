@@ -1,0 +1,201 @@
+@layer reset, typography;
+
+:root {
+	--c-red: hsl(0, 78%, 62%);
+	--c-cyan: hsl(180, 62%, 55%);
+	--c-orange: hsl(34, 97%, 64%);
+	--c-blue: hsl(212, 86%, 64%);
+	--c-azure: hsla(213, 47%, 67%, 0.5);
+	--c-grey-500: hsl(234, 12%, 34%);
+	--c-grey-400: hsl(212, 6%, 44%);
+	--c-white-200: hsl(0, 0%, 98%);
+	--c-white-100: hsl(0, 0%, 100%);
+
+	--s-500: 2.5rem; /* 40px */
+	--s-400: 2rem; /* 32px */
+	--s-300: 1.5rem; /* 24px */
+	--s-200: 1rem; /* 16px */
+	--s-180: 0.9375rem; /* 0.9375rem */
+	--s-100: 0.5rem; /* 8px; */
+
+	--card-color-height: 4px;
+}
+
+@layer reset {
+	/* 1. Use a more-intuitive box-sizing model */
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	/* 2. Remove default margin */
+	* {
+		margin: 0;
+	}
+
+	/* 5. Improve media defaults */
+	img, picture, video, canvas, svg {
+		display: block;
+		max-inline-size: 100%;
+		block-size: auto;
+	}
+
+	/* 6. Inherit fonts for form controls */
+	input, button, textarea, select {
+		font: inherit;
+	}
+
+	/* 7. Avoid text overflows */
+	p, h1, h2, h3, h4, h5, h6 {
+		overflow-wrap: break-word;
+	}
+}
+
+@layer general {
+	body {
+		background: var(--c-white-200);
+		font-family: "Poppins", serif;
+		letter-spacing: 0;
+	}
+
+	main {
+		inline-size: min-content;
+
+		margin-inline: auto;
+		padding-block-start: clamp(3.5rem, 2.4877rem + 4.3192vw, 6.375rem);
+		padding-block-end: var(--s-500);
+	}
+
+	h1, h2 {
+		color: var(--c-grey-500);
+	}
+
+	p {
+		color: var(--c-grey-400);
+	}
+}
+
+@layer components {
+	.header--main {
+		inline-size: clamp(19.75rem, 6.3912rem + 56.9975vw, 33.75rem);
+		margin-inline: auto;
+		margin-block-end: clamp(3.75rem, 3.1536rem + 2.5445vw, 4.375rem);
+		text-align: center;
+
+		p {
+			font-size: 0.9375rem;
+			line-height: 1.4;
+			font-weight: 400;
+		}
+	}
+
+	.header__title {
+		display: grid;
+		justify-content: center;
+		white-space: nowrap;
+		margin-block-end: var(--s-200);
+
+		font-size: clamp(1.5rem, 0.7844rem + 3.0534vw, 2.25rem);
+		line-height: 1.4;
+		letter-spacing: 0.25px;
+
+		span {
+			font-weight: 275;
+		}
+
+		strong {
+			font-weight: 600;
+		}
+	}
+
+	.cards {
+		display: grid;
+		justify-content: center;
+		gap: var(--s-400);
+	}
+
+	.card {
+		--top-color: var(--card-color, transparent);
+
+		display: grid;
+		gap: var(--s-100);
+		height: 15.625rem;
+		width: clamp(19.625rem, 17.0536rem + 5.3571vw, 21.875rem);
+		padding: var(--s-400);
+		border-radius: var(--s-100);
+
+		background: linear-gradient(
+				to bottom,
+				var(--top-color) var(--card-color-height),
+				var(--c-white-100) var(--card-color-height)
+		);
+		box-shadow: 0 15px 30px -11px var(--c-azure);
+
+		h2 {
+			font-size: 1.25rem;
+			line-height: 1.35;
+			font-weight: 600;
+		}
+
+		p {
+			font-size: 0.8125rem;
+			line-height: 1.6;
+			font-weight: 400;
+		}
+
+		img {
+			justify-self: end;
+			margin-block: auto var(--s-180);
+		}
+	}
+
+	.card--supervisor {
+		--card-color: var(--c-cyan);
+	}
+
+	.card--team-builder {
+		--card-color: var(--c-red);
+	}
+
+	.card--karma {
+		--card-color: var(--c-orange);
+	}
+
+	.card--calculator {
+		--card-color: var(--c-blue);
+	}
+}
+
+@media (min-width: 48rem) {
+	.cards {
+		grid-template-areas:
+			"supervisor   supervisor"
+			"team-builder karma"
+			"calculator   calculator";
+		justify-items: center;
+	}
+
+	.card--supervisor {
+		grid-area: supervisor;
+	}
+
+	.card--team-builder {
+		grid-area: team-builder;
+	}
+
+	.card--karma {
+		grid-area: karma;
+	}
+
+	.card--calculator {
+		grid-area: calculator;
+	}
+}
+
+@media (min-width: 90rem) {
+	.cards {
+    grid-template-areas:
+        "supervisor team-builder calculator"
+				"supervisor karma calculator";
+		align-items: center;
+	}
+}
