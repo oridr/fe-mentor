@@ -1,0 +1,151 @@
+:root {
+	/* Colors */
+
+	/* Primary */
+	--purple-500: hsl(263, 55%, 52%);
+	--purple-300: hsl(264, 82%, 70%);
+	--purple-50: hsl(260, 100%, 95%);
+
+	/* Neutral */
+	--white: hsl(0, 0%, 100%);
+	--silver: hsl(300, 5%, 96%);
+	--grey-500: hsl(217, 19%, 35%);
+	--grey-400: hsl(224, 10%, 45%);
+	--grey-200: hsl(0, 0%, 81%);
+	--grey-100: hsl(214, 17%, 92%);
+	--darkblue: hsl(219, 29%, 14%);
+	--black: hsl(0, 0%, 7%);
+
+	/* spacing */
+	--s-500: 2.5rem;   /* 40px */
+	--s-400: 2rem;   /* 32px */
+	--s-300: 1.5rem;   /* 24px */
+	--s-200: 1rem;     /* 16px */
+	--s-175: 0.875rem; /* 14px */
+	--s-150: 0.75rem;  /* 12px */
+	--s-100: 0.5rem;   /* 8px  */
+	--s-50: 0.25rem;   /* 4px  */
+}
+
+@layer reset {
+	/* 1. Use a more-intuitive box-sizing model */
+	*, *::before, *::after {
+		box-sizing: border-box;
+	}
+
+	/* 2. Remove default margin */
+	* {
+		margin: 0;
+	}
+
+	/* 5. Improve media defaults */
+	img, picture, video, canvas, svg {
+		display: block;
+		max-inline-size: 100%;
+		block-size: auto;
+	}
+
+	/* 6. Inherit fonts for form controls */
+	input, button, textarea, select {
+		font: inherit;
+	}
+
+	/* 7. Avoid text overflows */
+	p, h1, h2, h3, h4, h5, h6 {
+		overflow-wrap: break-word;
+	}
+}
+
+@layer general {
+	body {
+		font-family: "Barlow Semi Condensed", serif;
+		letter-spacing: 0;
+
+		background: var(--silver);
+
+	}
+
+	.text-preset-1 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	.text-preset-2 {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		line-height: 1.1;
+	}
+
+	.text-preset-3 {
+		font-size: 0.8125rem;
+		font-weight: 500;
+		line-height: 1.4;
+	}
+
+	.text-preset-4 {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		line-height: 1.1;
+	}
+}
+
+.cards {
+	display: grid;
+	gap: var(--s-400);
+
+	inline-size: min(100% - 2 * var(--s-400), 69.625rem);
+	margin-inline: auto;
+	margin-block: 4.5625rem;
+}
+
+.card {
+	display: grid;
+	gap: var(--s-200);
+	padding: var(--s-400);
+	background: mediumaquamarine;
+}
+
+.card__header {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	grid-template-areas:
+		"image title"
+		"image role";
+	gap: var(--s-50) var(--s-200);
+}
+
+.card__image {
+	grid-area: image;
+	align-self: center;
+
+	width: 1.75rem;
+	aspect-ratio: 1;
+	border-radius: 50%;
+}
+
+.card--featured .card__image {
+	outline: 2px var(--purple-50) solid;
+}
+
+.card__title {
+	grid-area: title;
+}
+
+.card__role {
+	grid-area: role;
+}
+
+@media (min-width: 36rem) {
+	.card[data-size="2"] {
+		grid-column: span 2;
+	}
+}
+
+@media (min-width: 52rem) {
+	.card[data-size="2"][data-direction="vertical"] {
+		grid-column: -2;
+		grid-row: span 2;
+		order: -1;
+	}
+}
