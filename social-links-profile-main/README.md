@@ -26,8 +26,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Github](https://github.com/oridr/fe-mentor/tree/main/social-links-profile-main)
-- Live Site URL: [Github Pages](https://oridr.github.io/fe-mentor/social-links-profile-main/index.html)
+- Solution URL: [GitHub](https://github.com/oridr/fe-mentor/tree/main/social-links-profile-main)
+- Live Site URL: [GitHub Pages](https://oridr.github.io/fe-mentor/social-links-profile-main/index.html)
 
 ## My process
 
